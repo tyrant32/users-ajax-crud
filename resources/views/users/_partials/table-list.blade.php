@@ -18,7 +18,6 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Favorite Colors</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,15 +27,6 @@
                         <td>{{ $user->first_name }}</td>
                         <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>
-                            @forelse($user->favoriteColors as $color)
-                                <span class="badge badge-primary">
-                                <span style="color:{{ $color->name }}">{{ $color->name }}</span>
-                            </span>
-                            @empty
-                                --- No Colors ---
-                            @endforelse
-                        </td>
                     </tr>
                 @endforeach
                 <tr>

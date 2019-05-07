@@ -51,13 +51,6 @@ class UsersListCriteria implements CriteriaInterface
             $model = $model->where('email', 'like', '%'.$this->request['email'].'%');
         }
     
-        if (isset($this->request['favorite_colors']) && $this->request['favorite_colors'])
-        {
-            $model->whereHas('favoriteColors', function ($q) {
-                $q->where('favorite_colors.id', '=', $this->request['favorite_colors']);
-            });
-        }
-    
-        return $model->orderBy('users.id');
+        return $model->orderBy('users.id','desc');
     }
 }

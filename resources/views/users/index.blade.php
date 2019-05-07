@@ -45,5 +45,6 @@
         var usersModalAjaxUrl = '{{ route('ajax.users.modal') }}';
         var usersListAjaxUrl = '{{ route('ajax.users.list') }}';
         var usersStoreAjaxUrl = '{{ route('ajax.users.store') }}';
+        var usersUpdateAjaxUrl = '{{ route('ajax.users.update') }}';
     </script>
 @endsection

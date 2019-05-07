@@ -17,9 +17,4 @@
         {!! Form::email('email', null, ['id' => 'email','placeholder' => 'Email', 'class' => 'form-control']) !!}
     </div>
 
-    <div class="form-group">
-        <label for="">Favorite Colors</label>
-        {!! Form::select('favorite_colors[]', $favoriteColors , null , ['multiple' => true,'class' => 'form-control']) !!}
-    </div>
-
 </div>

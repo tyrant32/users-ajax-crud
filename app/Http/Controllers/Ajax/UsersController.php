@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Ajax;
 
 use App\Criteria\UsersListCriteria;
 use App\Http\Controllers\Controller;
-use App\Repositories\FavoriteColorRepository;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Faker\Factory;
@@ -28,11 +27,6 @@ class UsersController extends Controller
     protected $repository;
     
     /**
-     * @var FavoriteColorRepository
-     */
-    protected $favoriteColorsRepository;
-    
-    /**
      * @var UserValidator
      */
     protected $validator;
@@ -46,19 +40,16 @@ class UsersController extends Controller
      * UsersController constructor.
      *
      * @param UserRepository $repository
-     * @param FavoriteColorRepository $favoriteColorsRepository
      * @param UserValidator $validator
      * @param Factory $faker
      */
     public function __construct(
         UserRepository $repository,
-        FavoriteColorRepository $favoriteColorsRepository,
         UserValidator $validator,
         Factory $faker
     ) {
         $this->middleware(['auth','throttle:1000']);
         $this->repository = $repository;
-        $this->favoriteColorsRepository = $favoriteColorsRepository;
         $this->validator = $validator;
         $this->faker = $faker::create();
     }
@@ -74,7 +65,6 @@ class UsersController extends Controller
         {
             $users = $this->repository
                 ->pushCriteria(new UsersListCriteria(request()->all()))
-                ->with('favoriteColors')
                 ->paginate();
             
             $users->setPath(route('home', \request()->all()));

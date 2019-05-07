@@ -15,11 +15,6 @@
 </div>
 
 <div class="form-group">
-    <label for="">Favorite Colors</label>
-    {!! Form::select('favorite_colors[]', $favoriteColors , null , ['multiple' => true,'class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
     {!! Form::submit('Search', ['class' => 'form-control btn btn-primary']) !!}
     <a href="{{ route('home') }}" class="btn btn-default">Clear</a>
 </div>

@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use App\Entities\FavoriteColor;
 use App\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;

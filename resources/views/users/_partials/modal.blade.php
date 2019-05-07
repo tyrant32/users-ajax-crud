@@ -14,15 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>User Favorite Colors:</h4>
-                <hr>
-                @forelse($user->favoriteColors as $color)
-                    <span class="badge badge-primary">
-                        <span style="color:{{ $color->name }}">{{ $color->name }}</span>
-                    </span>
-                @empty
-                    --- No Colors ---
-                @endforelse
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'UsersController@index')->name('home');
+Route::get('/home', 'UsersController@index')->name('home');
 
 Route::namespace('Ajax')->prefix('ajax')->group(function () {
     Route::post('users/list', 'UsersController@index')->name('ajax.users.list');
     Route::post('users/modal', 'UsersController@modal')->name('ajax.users.modal');
     Route::post('users/store', 'UsersController@store')->name('ajax.users.store');
     Route::post('users/update', 'UsersController@update')->name('ajax.users.update');
+    Route::post('users/destroy', 'UsersController@destroy')->name('ajax.users.destroy');
 });

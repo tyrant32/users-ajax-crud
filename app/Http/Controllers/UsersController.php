@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Criteria\UsersListCriteria;
-use App\Repositories\FavoriteColorRepository;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Illuminate\Http\Response;
@@ -22,11 +21,6 @@ class UsersController extends Controller
     protected $repository;
     
     /**
-     * @var FavoriteColorRepository
-     */
-    protected $favoriteColorsRepository;
-    
-    /**
      * @var UserValidator
      */
     protected $validator;
@@ -35,17 +29,14 @@ class UsersController extends Controller
      * UsersController constructor.
      *
      * @param UserRepository $repository
-     * @param FavoriteColorRepository $favoriteColorsRepository
      * @param UserValidator $validator
      */
     public function __construct(
         UserRepository $repository,
-        FavoriteColorRepository $favoriteColorsRepository,
         UserValidator $validator
     ) {
         $this->middleware(['auth','throttle:600']);
         $this->repository = $repository;
-        $this->favoriteColorsRepository = $favoriteColorsRepository;
         $this->validator = $validator;
     }
     
@@ -60,11 +51,8 @@ class UsersController extends Controller
     
         $users = $this->repository
             ->pushCriteria(new UsersListCriteria(request()->all()))
-            ->with('favoriteColors')
             ->paginate();
     
-        $favoriteColors = $this->favoriteColorsRepository->pluck('name', 'id');
-        
         if (request()->wantsJson())
         {
             return response()->json([
@@ -72,6 +60,6 @@ class UsersController extends Controller
             ]);
         }
         
-        return view('users.index', compact('users', 'favoriteColors'));
+        return view('users.index', compact('users'));
     }
 }
