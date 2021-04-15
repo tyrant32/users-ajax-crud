@@ -16,7 +16,7 @@ npm run prod
 
 ---
 
-# Demo: [https://ivan-ivanov.info/users-ajax-crud](https://ivan-ivanov.info/users-ajax-crud "Users Ajax CRUD Example")
+# Demo: [https://users-ajax-crud.ivanivanov.me](https://users-ajax-crud.ivanivanov.me "Users Ajax CRUD Example")
 
 ---
 
